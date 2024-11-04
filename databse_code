@@ -1,0 +1,22 @@
+USE inventory;
+GO
+
+INSERT INTO customers (customer_name, customer_password) VALUES ('alice', 'password123');
+INSERT INTO customers (customer_name, customer_password) VALUES ('bob', 'securepass456');
+INSERT INTO customers (customer_name, customer_password) VALUES ('charlie', 'mypassword789');
+GO
+
+INSERT INTO suppliers (supplier_name, supplier_password) VALUES ('supplier1', 'supplierpass1');
+INSERT INTO suppliers (supplier_name, supplier_password) VALUES ('supplier2', 'supplierpass2');
+INSERT INTO suppliers (supplier_name, supplier_password) VALUES ('supplier3', 'supplierpass3');
+GO
+
+INSERT INTO product (product_name) VALUES ('product a');
+INSERT INTO product (product_name) VALUES ('product b');
+INSERT INTO product (product_name) VALUES ('product c');
+INSERT INTO product (product_name) VALUES ('product d');
+GO
+
+INSERT INTO order_list (product_id, quantity, total_price) VALUES (1, 2, 112.00);
+INSERT INTO order_list (product_id, quantity, total_price) VALUES (2, 1, 56.00);
+GO
