@@ -1,22 +1,54 @@
-USE inventory;
-GO
 
-INSERT INTO customers (customer_name, customer_password) VALUES ('alice', 'password123');
-INSERT INTO customers (customer_name, customer_password) VALUES ('bob', 'securepass456');
-INSERT INTO customers (customer_name, customer_password) VALUES ('charlie', 'mypassword789');
-GO
+CREATE DATABASE Inventory
 
-INSERT INTO suppliers (supplier_name, supplier_password) VALUES ('supplier1', 'supplierpass1');
-INSERT INTO suppliers (supplier_name, supplier_password) VALUES ('supplier2', 'supplierpass2');
-INSERT INTO suppliers (supplier_name, supplier_password) VALUES ('supplier3', 'supplierpass3');
-GO
+USE Inventory
 
-INSERT INTO product (product_name) VALUES ('product a');
-INSERT INTO product (product_name) VALUES ('product b');
-INSERT INTO product (product_name) VALUES ('product c');
-INSERT INTO product (product_name) VALUES ('product d');
-GO
 
-INSERT INTO order_list (product_id, quantity, total_price) VALUES (1, 2, 112.00);
-INSERT INTO order_list (product_id, quantity, total_price) VALUES (2, 1, 56.00);
-GO
+CREATE TABLE Customers (
+    customer_id INT PRIMARY KEY IDENTITY(1,1),
+    customer_name NVARCHAR(100) NOT NULL,
+    customer_password NVARCHAR(100) NOT NULL
+)
+
+
+CREATE TABLE Suppliers (
+    supplier_id INT PRIMARY KEY IDENTITY(1,1),
+    Supplier_name NVARCHAR(100) NOT NULL,
+    Supplier_password NVARCHAR(100) NOT NULL
+)
+
+
+CREATE TABLE Product (
+    Product_id INT PRIMARY KEY IDENTITY(1,1),
+    Product_name NVARCHAR(100) NOT NULL
+)
+
+CREATE TABLE order_list (
+    order_id INT PRIMARY KEY IDENTITY(1,1),
+    Product_id INT NOT NULL,
+    Quantity INT NOT NULL,
+    total_price DECIMAL(18, 2) NOT NULL,
+    FOREIGN KEY (Product_id) REFERENCES Product(Product_id)
+)
+
+
+INSERT INTO Customers (customer_name, customer_password) VALUES ('Alice', 'password123'),
+('Bob', 'securepass456'),
+('Mohamed reda', '123')
+
+
+
+INSERT INTO Suppliers (Supplier_name, Supplier_password) VALUES ('Supplier1', 'supplierpass1'),
+('Mohamed redaa', '123'),
+('Supplier2', 'supplierpass2'),
+('Supplier3', 'supplierpass3')
+
+
+INSERT INTO Product (Product_name) VALUES ('Product A'),
+('Product B'),
+('Product C'),
+('Product D')
+
+
+INSERT INTO order_list (Product_id, Quantity, total_price) VALUES (1, 2, 112.00),
+ (2, 1, 56.00)
